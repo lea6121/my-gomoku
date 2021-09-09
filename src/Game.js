@@ -20,11 +20,6 @@ function Board() {
 
   const handleClick = (y, x) => {
     const newBoard = JSON.parse(JSON.stringify(board))
-    console.log('board:', board)
-    console.log('y:', y, 'x:', x) // 這邊的 y 和 x 是最新下的棋子的 x y 值
-    console.log('newBoard:', newBoard) // 這邊的 newBoard 也是有存取到最新的棋盤
-    console.log('這是外面:', newBoard[y][x]) // 想知道為何這邊的值會是 null
-
     if (
       calculateWinner(
         position.y,
@@ -34,7 +29,6 @@ function Board() {
       ) ||
       newBoard[y][x] !== null // 如果該位置已有子就不能再下
     ) {
-      console.log('這是 if:', newBoard[y][x])
       return
     }
     newBoard[y][x] = whiteIsNext ? '⚫' : '⚪'
@@ -46,7 +40,6 @@ function Board() {
       x: positionX,
       y: positionY
     })
-
     setBoard(newBoard)
     setWhiteIsNext(!whiteIsNext)
   }
@@ -83,10 +76,10 @@ function Board() {
         <button
           type="button"
           class="btn btn-dark"
-          value="重新整理"
+          value="reload"
           onClick={() => window.location.reload()}
         >
-          restart
+          Restart
         </button>
       </div>
     </div>
